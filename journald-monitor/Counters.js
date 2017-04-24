@@ -25,7 +25,7 @@ class Counters {
   toPrometheus(line, end) {
     Array.from(this.map)
       .forEach(([k, v]) => {
-        return line(`${k} = ${v.toFixed(2)}\n`);
+        return line(`${k} ${v.toFixed(2)}\n`);
       });
     return end();
   }
