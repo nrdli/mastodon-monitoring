@@ -1,5 +1,6 @@
 const { Tail } = require('tail');
 const { createServer } = require('http');
+require('dotenv').config();
 
 const { Counters } = require('./Counters');
 
