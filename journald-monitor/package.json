@@ -1,0 +1,15 @@
+{
+  "name": "journald-monitor",
+  "version": "0.0.1",
+  "description": "A way to monitor simple stats from mastodon by looking at log files",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "Kegan Myers <kegan@keganmyers.com>",
+  "license": "Unlicense",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "tail": "^1.2.1"
+  }
+}
