@@ -6,7 +6,7 @@ class Counters {
     return this.map.get(counter) || 0;
   }
   add(counter, value) {
-    return this.map.set(key, this.getOrZero() + value);
+    return this.map.set(counter, this.getOrZero(counter) + value);
   }
   increment(counter) {
     return this.add(counter, 1);
