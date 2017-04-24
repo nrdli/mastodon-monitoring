@@ -3,7 +3,7 @@ class Counters {
     this.map = new Map();
   }
   canonicalize(name) {
-    return name.replace(/[^a-z]/i, '_').replace(/_{2,}/, '_')
+    return name.replace(/[^a-z]/ig, '_').replace(/_{2,}/g, '_')
   }
   get(counter) {
     return this.map.get(this.canonicalize(counter));
