@@ -2,11 +2,20 @@ class Counters {
   constructor() {
     this.map = new Map();
   }
+  canonicalize(name) {
+    return name.replace(/[^a-z]/i, '_').replace(/_{2,}/, '_')
+  }
+  get(counter) {
+    return this.map.get(this.canonicalize(counter));
+  }
+  set(counter, value) {
+    return this.map.set(this.canonicalize(counter), value);
+  }
   getOrZero(counter) {
-    return this.map.get(counter) || 0;
+    return this.get(counter) || 0;
   }
   add(counter, value) {
-    return this.map.set(counter, this.getOrZero(counter) + value);
+    return this.set(counter, this.getOrZero(counter) + value);
   }
   increment(counter) {
     return this.add(counter, 1);
@@ -14,7 +23,7 @@ class Counters {
   toPrometheus(line, end) {
     Array.from(this.map)
       .forEach(([k, v]) => {
-        return line(`# TYPE ${k} counter\n${k} = ${v.toFixed(2)}\n`);
+        return line(`${k} = ${v.toFixed(2)}\n`);
       });
     return end();
   }
